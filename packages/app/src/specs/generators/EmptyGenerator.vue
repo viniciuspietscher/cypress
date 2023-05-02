@@ -36,7 +36,11 @@
             class="rounded flex font-medium bg-warning-100 mt-16px p-16px text-warning-600 gap-8px items-center"
           >
             <i-cy-errored-outline_x16 class="icon-dark-warning-600" />
-            {{ t('createSpec.e2e.importTemplateSpec.specExtensionWarning') }}<span class="rounded bg-warning-200 py-2px px-8px text-warning-700">{{ recommendedFileName }}</span>
+            <div>
+              {{ t('createSpec.e2e.importTemplateSpec.specExtensionWarning') }}<InlineCodeFragment class="bg-warning-200 text-14px text-warning-700">
+                {{ recommendedFileName }}
+              </InlineCodeFragment>
+            </div>
           </div>
 
           <div
@@ -138,6 +142,7 @@ import type { EmptyGeneratorFragment, GeneratorSuccessFileFragment } from '../..
 import { EmptyGenerator_MatchSpecFileDocument, EmptyGenerator_GenerateSpecDocument } from '../../generated/graphql'
 import StandardModalFooter from '@packages/frontend-shared/src/components/StandardModalFooter.vue'
 import GeneratorSuccess from './GeneratorSuccess.vue'
+import InlineCodeFragment from '@packages/frontend-shared/src/components/InlineCodeFragment.vue'
 import TestResultsIcon from '~icons/cy/test-results_x24.svg'
 import PlusButtonIcon from '~icons/cy/add-large_x16.svg'
 import { posixify } from '../../paths'
@@ -247,7 +252,7 @@ const showExtensionWarning = computed(() => isValidSpecFile.value && !specFile.v
 const recommendedFileName = computed(() => {
   const split = specFile.value.split('.')
 
-  return `{filename}.cy.${split[split.length - 1]}`
+  return `[filename].cy.${split[split.length - 1]}`
 })
 
 const invalidSpecWarning = computed(() => props.type === 'e2e' ? t('createSpec.e2e.importTemplateSpec.invalidSpecWarning') : t('createSpec.component.importTemplateSpec.invalidComponentWarning'))

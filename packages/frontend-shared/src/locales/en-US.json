@@ -101,7 +101,7 @@
         "chooseFilenameHeader": "Enter the path for your new spec",
         "inputPlaceholder": "Enter a relative path...",
         "invalidSpecWarning": "This path is invalid because it doesn't match the following ",
-        "specExtensionWarning": "We recommend naming your spec to match the following pattern: "
+        "specExtensionWarning": "We recommend naming your spec with the pattern: "
       }
     },
     "component": {
